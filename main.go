@@ -23,6 +23,10 @@ func (sm superman) speak() {
 	fmt.Println("I'm a superman - this is my name", sm.person.first)
 }
 
+func talk(h human) {
+	h.speak()
+}
+
 func main() {
 
 	p1 := person{
@@ -42,5 +46,8 @@ func main() {
 
 	h2 = sm1
 	h2.speak()
+
+	talk(h1)
+	talk(h2)
 
 }
