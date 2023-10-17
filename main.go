@@ -10,8 +10,17 @@ type person struct {
 	first string
 }
 
+type superman struct {
+	person person
+	ltk    bool
+}
+
 func (p person) speak() {
 	fmt.Println("from a person - this is my name", p.first)
+}
+
+func (sm superman) speak() {
+	fmt.Println("I'm a superman - this is my name", sm.person.first)
 }
 
 func main() {
@@ -20,7 +29,18 @@ func main() {
 		first: "hide",
 	}
 
-	var h human
-	h = p1
-	h.speak()
+	sm1 := superman{
+		person: person{
+			first: "HIDE",
+		},
+		ltk: true,
+	}
+
+	var h1, h2 human
+	h1 = p1
+	h1.speak()
+
+	h2 = sm1
+	h2.speak()
+
 }
