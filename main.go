@@ -2,52 +2,30 @@ package main
 
 import "fmt"
 
-type human interface {
-	speak()
-}
-
-type person struct {
+type perspn struct {
 	first string
-}
-
-type superman struct {
-	person person
-	ltk    bool
-}
-
-func (p person) speak() {
-	fmt.Println("from a person - this is my name", p.first)
-}
-
-func (sm superman) speak() {
-	fmt.Println("I'm a superman - this is my name", sm.person.first)
-}
-
-func talk(h human) {
-	h.speak()
+	last  string
 }
 
 func main() {
 
-	p1 := person{
-		first: "hide",
+	p1 := perspn{
+		first: "yamada",
+		last:  "tarou",
 	}
 
-	sm1 := superman{
-		person: person{
-			first: "HIDE",
-		},
-		ltk: true,
+	p2 := perspn{
+		first: "satou",
+		last:  "kouji",
 	}
 
-	var h1, h2 human
-	h1 = p1
-	h1.speak()
+	p3 := perspn{
+		first: "ishii",
+		last:  "shinji",
+	}
 
-	h2 = sm1
-	h2.speak()
-
-	talk(h1)
-	talk(h2)
+	fmt.Print(p1)
+	fmt.Print(p2)
+	fmt.Print(p3)
 
 }
