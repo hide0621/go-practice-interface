@@ -9,23 +9,22 @@ type perspn struct {
 
 func main() {
 
-	p1 := perspn{
-		first: "yamada",
-		last:  "tarou",
+	p := []perspn{
+		{
+			first: "yamada",
+			last:  "tarou",
+		},
+		{
+			first: "satou",
+			last:  "kouji",
+		},
+		{
+			first: "ishii",
+			last:  "shinji",
+		},
 	}
 
-	p2 := perspn{
-		first: "satou",
-		last:  "kouji",
+	for _, v := range p {
+		fmt.Println(v)
 	}
-
-	p3 := perspn{
-		first: "ishii",
-		last:  "shinji",
-	}
-
-	fmt.Print(p1)
-	fmt.Print(p2)
-	fmt.Print(p3)
-
 }
