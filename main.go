@@ -4,6 +4,11 @@ import (
 	"log"
 )
 
+type DBInterface interface {
+	Get()
+	Delete()
+}
+
 type DBInfo3rdParty struct {
 	username string
 	password string
@@ -13,17 +18,11 @@ type DBHandler struct {
 	DBInfo3rdParty
 }
 
-func DBNormal(username, password string) {
-
-	d := &DBHandler{
-		DBInfo3rdParty{
-			username: username,
-			password: password,
-		},
-	}
+func DBUseInterface(d DBInterface) {
 
 	d.Get()
 	d.Delete()
+
 }
 
 func (d *DBHandler) Get() {
@@ -35,5 +34,12 @@ func (d *DBHandler) Delete() {
 }
 
 func main() {
-	DBNormal("user", "pass")
+
+	d := &DBHandler{
+		DBInfo3rdParty{
+			username: "user",
+			password: "pass",
+		},
+	}
+	DBUseInterface(d)
 }
