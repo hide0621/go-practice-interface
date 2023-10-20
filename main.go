@@ -1,30 +1,39 @@
 package main
 
-import "fmt"
+import (
+	"log"
+)
 
-type perspn struct {
-	first string
-	last  string
+type DBInfo3rdParty struct {
+	username string
+	password string
+}
+
+type DBHandler struct {
+	DBInfo3rdParty
+}
+
+func DBNormal(username, password string) {
+
+	d := &DBHandler{
+		DBInfo3rdParty{
+			username: username,
+			password: password,
+		},
+	}
+
+	d.Get()
+	d.Delete()
+}
+
+func (d *DBHandler) Get() {
+	log.Println("Get Process")
+}
+
+func (d *DBHandler) Delete() {
+	log.Println("Delete Process")
 }
 
 func main() {
-
-	p := []perspn{
-		{
-			first: "yamada",
-			last:  "tarou",
-		},
-		{
-			first: "satou",
-			last:  "kouji",
-		},
-		{
-			first: "ishii",
-			last:  "shinji",
-		},
-	}
-
-	for _, v := range p {
-		fmt.Println(v)
-	}
+	DBNormal("user", "pass")
 }
