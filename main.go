@@ -1,45 +1,16 @@
 package main
 
-import (
-	"log"
-)
+import "fmt"
 
-type DBInterface interface {
-	Get()
-	Delete()
-}
+type ByteCounter int
 
-type DBInfo3rdParty struct {
-	username string
-	password string
-}
-
-type DBHandler struct {
-	DBInfo3rdParty
-}
-
-func DBUseInterface(d DBInterface) {
-
-	d.Get()
-	d.Delete()
-
-}
-
-func (d *DBHandler) Get() {
-	log.Println("Get Process")
-}
-
-func (d *DBHandler) Delete() {
-	log.Println("Delete Process")
+func (bc *ByteCounter) Write(p []byte) (n int, err error) {
+	*bc = ByteCounter(len(p))
+	return len(p), err
 }
 
 func main() {
-
-	d := &DBHandler{
-		DBInfo3rdParty{
-			username: "user",
-			password: "pass",
-		},
-	}
-	DBUseInterface(d)
+	var b ByteCounter
+	fmt.Fprintf(&b, "hello world")
+	fmt.Println(b)
 }
