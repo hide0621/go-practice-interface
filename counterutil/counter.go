@@ -1,4 +1,4 @@
-package countertil
+package counterutil
 
 type ByteCounter int
 
